@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caramel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry Cream Soda:wght@400;700&display=swap');
+
+
+.div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.div2{
+    width: 1200px;
+    height: 450px;
+    margin: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-shadow: 2px 2px 2px 2px  rgba(5, 5, 227, 0.6);
+}
+.div3{
+    width: 610px;
+    height: 310px;
+    margin: 10px 10px 10px 40px;
+    border-radius: 10px;
+}
+.div3 textarea{
+    margin: 10px;
+    padding: 10px;
+    width: 570px;
+    height: 270px;
+    resize: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px  rgba(0,0,0,0.6) ;
+}
+.div3 .detection{
+    margin: 10px 0px 10px 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(5, 5, 227, 0.6);
+    color: white;
+    font-family: 'Catamaran' ,sans-serif;
+    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+.div3 .btn-text .televerser{
+    margin: 10px 0px 10px 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(241, 6, 6, 0.516);
+    color: white;
+    font-family: 'Catamaran' ,sans-serif;
+    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+.comment{
+    margin: 20px 20px 50px 50px;
+    justify-content: center;
+    gap: 10px;
+}
+.comment p{
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 2rem;
+    color: blue;
+    padding-left: 10px;
+}
+.whatuser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.whatuser button{
+    margin: 10px 0px 10px 30px;
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(5, 5, 227, 0.6);
+    color: white;
+    font-family: 'Catamaran' ,sans-serif;
+    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
+    cursor: pointer;
+    font-size: 2rem;
+}
+

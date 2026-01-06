@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caramel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry Cream Soda:wght@400;700&display=swap');
+
+.avistudent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.avistudent .Avis{
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    margin: 30px;
+    background-color:rgba(255, 166, 0, 0.772);
+}
+.Avis div{
+    display: flex;
+}
+.Avis div p{
+    font-size: 1.5rem;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-weight: bold;
+}
+.Avis .commentaire{
+    margin: 10px;
+    font-size: 1.3rem;
+    font-family: 'Cherry Cream Soda', cursive;
+}

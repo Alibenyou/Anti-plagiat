@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caramel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry Cream Soda:wght@400;700&display=swap');
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    border-radius: 60px;
+    padding: 0px 20px;
+}
+.header h2{
+    font-family: 'Caramel', cursive;
+    font-size: 3rem;      
+    color: #1205cf;       
+    letter-spacing: 1px;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+.header ul{
+    display: flex;
+}
+.header ul li{
+    margin: 20px;
+    list-style: none;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+    font-size: 1.5rem;      
+}
+.header ul li a{
+    text-decoration: none;
+}
+
+.btn-inscrire{
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgba(6, 6, 241, 0.646);
+    color: white;
+    font-weight: bold;
+    font-family: 'Catamaran', sans-serif;
+    box-shadow: 5px 5px 5px   rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+.btn-connexion{
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-right: 20px ;
+    border: none;
+    background-color: rgba(6, 6, 241, 0.646);
+    color: white;
+    font-weight: bold;
+    font-family: 'Catamaran', sans-serif;
+    box-shadow: 5px 5px 5px   rgba(0,0,0,0.6);
+    cursor: pointer;
+}

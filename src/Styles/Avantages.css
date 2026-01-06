@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caramel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry Cream Soda:wght@400;700&display=swap');
+
+.AvantageApp{
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 2px 2px  rgba(5, 5, 227, 0.6) ;
+    margin: 10px 30px;
+    height: 580px;
+}
+.btn-Avantage button{
+    margin: 10px 0px 10px 45px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(6, 6, 241, 0.516);
+    color: white;
+    font-family: 'Catamaran' ,sans-serif;
+    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.AvantageApp .Avantage1, .Avantage2, .Avantage3{
+    width: 400px;
+    height: 120px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(58, 6, 6, 0.699);
+}
+
+.AvantageApp .Avantage1{
+    margin-left: 40px;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 1rem;
+    color: white;
+}
+.Avantage1 div p{
+    color: white;
+}
+
+
+.AvantageApp .Avantage2{
+    margin-left: 80px;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 1rem;
+    color: white;
+}
+.Avantage2 div p{
+    color: white;
+}
+
+
+.AvantageApp .Avantage3{
+    margin-left: 120px;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 1rem;
+    color: white;
+}
+.Avantage3 div p{
+    color: white;
+}
+.AvantageApp img{
+    margin-right: 30px;
+    border-radius: 10px;
+}
