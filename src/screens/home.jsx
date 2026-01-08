@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck,faGraduationCap,faChalkboardUser} from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck,faGraduationCap,faChalkboardUser, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
 import Header from '../components/Header';
 import '../Styles/home.css';
 import Avantage from '../components/Avantages';
@@ -19,7 +20,8 @@ function Home() {
                 <textarea name="text" id="text" placeholder='Entrer du text a verifier'></textarea>
                 <div className='btn-text'>
                     <button className='detection'>Detecter le texte</button>
-                    <button className='televerser'>Televerser un document</button>
+                    <button className='televerser'>Televerser un document
+                         <FontAwesomeIcon icon={faArrowUpFromBracket} color='blank'/></button>
                 </div>
             </div>
             <div className='comment'>
@@ -39,6 +41,9 @@ function Home() {
         <Avisteacher/>
         <hr />
         <Footer/>
+        <Link to='/student'>Page Student</Link>
+        <Link to='/teacher'>Page Teacher</Link>
+        <Link to='/admin'>Page Admin</Link>
      </>
 }
 
