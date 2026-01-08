@@ -1,11 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Home from './screens/home' 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Inscription from './screens/inscription';
+import Connexion from './screens/connexion';
+import Home from './screens/home';
+
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/inscription" element={<Inscription />} />
+        <Route path="/connexion" element={<Connexion />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="*" element={<Connexion />} /> {/* par défaut */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
