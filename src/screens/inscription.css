@@ -1,0 +1,242 @@
+/* BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* PAGE */
+.inscription {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5efef;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= MENU ================= */
+.menu {
+  height: 70px;
+  width: 100%;
+  background-color: #d3c4c4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.menu p {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Pacifico', cursive;
+  color: blue;
+
+}
+
+.langue {
+  font-size: 22px;
+  color: blue;
+  margin-right: 8px;
+}
+
+.lang {
+  height: 35px;
+  border-radius: 6px;
+  border: 1px solid blue;
+  padding: 0 8px;
+}
+
+/* ================= CONTENU ================= */
+.divp {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* CARTE FORMULAIRE */
+.tr {
+  width: 100%;
+  max-width: 420px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= BOUTON GOOGLE ================= */
+.google {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/*================== langue ====================*/
+.gue {
+ position: relative;
+  width: 9%;
+  margin-bottom: 1px;
+}
+
+.langue {
+position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: rgb(113, 113, 143);
+  font-size: 18px;
+}
+
+.lang {
+width: 100%;
+  height: 45px;
+  font-size: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  padding-left: 25px;
+  border: 2px solid #cababa;
+  background-color: #c7b4b4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: rgb(113, 113, 143);
+}
+
+/* ================= INPUT EMAIL ================= */
+.mail,
+.sel {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.inp,
+.cel {
+  width: 100%;
+  height: 45px;
+  font-size: 15px;
+  border-radius: 8px;
+  padding-left: 45px;
+  border: 2px solid blue;
+  background-color: #f5f8ff;
+  color: #222;
+}
+
+.inp:focus,
+.cel:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+/* ICÔNES DANS INPUT */
+.ico_mail {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: blue;
+  font-size: 18px;
+}
+
+/* ================= MOT DE PASSE ================= */
+.input-password {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.input-password input {
+  width: 100%;
+  height: 45px;
+  padding-left: 45px;
+  padding-right: 45px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 2px solid blue;
+  background-color: #f5f8ff;
+}
+
+.input-password input:focus {
+  outline: none;
+  background-color: white;
+}
+
+.cadena {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: blue;
+  font-size: 18px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: blue;
+  font-size: 18px;
+}
+
+/* ================= BOUTON INSCRIPTION ================= */
+.bou {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.but {
+  width: 100%;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid blue;
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+}
+
+.but:hover {
+  background-color: #eef3ff;
+}
+
+/* ================= LIEN CONNEXION ================= */
+.con {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.ton {
+  background: none;
+  border: none;
+  color: blue;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* ================= TEXTE CONDITIONS ================= */
+.po {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.tex {
+  font-size: 11px;
+  color: #555;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 480px) {
+  .tr {
+    padding: 20px;
+  }
+
+  .menu p {
+    font-size: 16px;
+  }
+}
