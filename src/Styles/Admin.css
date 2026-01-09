@@ -1,0 +1,117 @@
+.container{
+    display: grid;
+    grid-template-areas:
+    "header header"
+    "section main"
+    "aside aside"
+    "footer footer"
+    ;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows:auto 1fr auto;
+    gap: 20px;
+    
+}
+header{
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px;
+    background-color: white;
+}
+header img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 5px black);
+    cursor: pointer;
+}
+header h2{
+    font-family: 'Caramel', cursive;
+    font-size: 2rem;      
+    color: #1205cf;       
+    letter-spacing: 1px;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+}
+header .divAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.divUser select{
+    padding: 10px;
+    border-radius: 20px;
+} 
+.section {
+    grid-area:section;
+    background-color: rgba(255, 255, 255, 0.354);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0,0.6);
+}
+.fonctionaliteAdmin{
+    height: 500px;
+}
+.fonctionaliteAdmin div{ 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid black;
+}
+.fonctionaliteAdmin .documentAdmin{
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+.fonctionaliteAdmin .documentAdmin:hover{
+    background-color: rgb(211, 205, 205);
+    border-radius: 10px;
+}
+.fonctionaliteAdmin .corbeilleAdmin{
+    cursor: pointer;
+    
+}
+.fonctionaliteAdmin .corbeilleAdmin:hover{
+    background-color: rgb(211, 205, 205);
+    border-radius: 10px;
+}
+.fonctionaliteAdmin .chatAdmin{
+    cursor: pointer;
+    
+}
+.fonctionaliteAdmin .chatAdmin:hover{
+    background-color: rgb(211, 205, 205);
+    border-radius: 10px;
+}
+.menu-principale{
+    grid-area:main;
+    background-color: rgba(89, 213, 213, 0.484);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    padding: 20px;
+}
+.menu-principale button{
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0,0.6);
+    cursor: pointer;
+}
+aside{
+    grid-area: aside;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer{
+    grid-area:footer;
+    text-align: center;
+    padding:0px 5px;
+    margin: 0px;
+}
+

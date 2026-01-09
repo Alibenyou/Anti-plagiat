@@ -3,3 +3,33 @@
     justify-content: space-between;
     margin: 30px;
 }
+.footer .Divfooter p{
+    cursor: pointer;
+}
+.footer .Divfooter p:hover{
+    color: blue;
+}
+.Reseaux{
+    margin: 10px 40px;
+    display: flex;
+    justify-content:space-around;
+}
+.Reseaux .Reseaux-sociaux a{
+    padding: 20px;
+}
+
+.btn-inscription{
+    padding: 12px 16px;
+    border-radius: 50px;
+    margin-right: 20px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Catamaran', sans-serif;
+    box-shadow: 5px 5px 5px   rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+.btn-inscription:hover{
+    color: white;
+    background-color: rgba(6, 6, 241, 0.646);;
+}

@@ -6,13 +6,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
     border-radius: 60px;
     padding: 0px 20px;
 }
+.header div{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.header img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 5px black)
+}
 .header h2{
     font-family: 'Caramel', cursive;
-    font-size: 3rem;      
+    font-size: 2rem;      
     color: #1205cf;       
     letter-spacing: 1px;
     text-shadow: 5px 5px 5px rgba(0,0,0,0.6);
@@ -30,7 +43,9 @@
 .header ul li a{
     text-decoration: none;
 }
-
+.btn select{
+    margin-right: 20px;
+}
 .btn-inscrire{
     padding: 8px 12px;
     border-radius: 10px;
