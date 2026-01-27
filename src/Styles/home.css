@@ -1,88 +1,196 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caramel:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cherry Cream Soda:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda:wght@400;700&display=swap');
 
 .div1{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .div2{
     width: 1200px;
-    height: 450px;
+    height: auto;
     margin: 20px;
     border-radius: 20px;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 2px 2px 2px 2px rgba(5, 5, 227, 0.6);
+    padding: 20px;
+}
+
+/* ===== MOCKUP ===== */
+.mockup{
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.mockup-header{
+    display: flex;
     align-items: center;
-    box-shadow: 2px 2px 2px 2px  rgba(5, 5, 227, 0.6);
+    gap: 10px;
+    margin-bottom: 20px;
 }
-.div3{
-    width: 610px;
-    height: 310px;
-    margin: 10px 10px 10px 40px;
-    border-radius: 10px;
+
+.dot{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
 }
-.div3 textarea{
-    margin: 10px;
-    padding: 10px;
-    width: 570px;
-    height: 270px;
-    resize: none;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px 2px  rgba(0,0,0,0.6) ;
+
+.red{ background: #ff4d4d; }
+.yellow{ background: #f7d12a; }
+.green{ background: #2ecc71; }
+
+.mockup-header h3{
+    font-family: 'Caramel', cursive;
+    font-size: 1.8rem;
+    color: #1205cf;
 }
-.div3 .detection{
-    margin: 10px 0px 10px 30px;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(5, 5, 227, 0.6);
+
+.mockup-body{
+    display: flex;
+    gap: 20px;
+}
+
+/* Left cards */
+.mockup-left{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mockup-card{
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.mockup-card h4{
+    margin-bottom: 10px;
+    font-family: 'Catamaran', sans-serif;
+}
+
+.score span{
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.status span{
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.mockup-card ul{
+    list-style: none;
+    padding: 0;
+}
+
+.mockup-card ul li{
+    margin: 5px 0;
+}
+
+/* Right screen */
+.mockup-right{
+    width: 50%;
+}
+
+.mockup-screen{
+    background: #1b1b2f;
     color: white;
-    font-family: 'Catamaran' ,sans-serif;
-    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
-    cursor: pointer;
-}
-.div3 .btn-text .televerser{
-    margin: 10px 0px 10px 30px;
     padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(241, 6, 6, 0.516);
-    color: white;
-    font-family: 'Catamaran' ,sans-serif;
-    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
-    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
 }
+
+.mockup-screen h4{
+    font-family: 'Caramel', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.mockup-text{
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 120px;
+}
+
+.mockup-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 0px;
+    gap: 10px;
+}
+.btn-mockup{
+    padding: 0px;
+}
+
+.btn-mockup{
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Catamaran', sans-serif;
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.btn-blue{
+    background: rgba(6, 6, 241, 0.6);
+}
+
+/* COMMENT */
 .comment{
-    margin: 20px 20px 50px 50px;
+    margin-top: 20px;
     justify-content: center;
     gap: 10px;
 }
 .comment p{
     font-family: 'Cherry Cream Soda', cursive;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: blue;
-    padding-left: 10px;
-}
-.whatuser{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-}
-.whatuser button{
-    margin: 10px 0px 10px 30px;
-    padding: 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: rgba(5, 5, 227, 0.6);
-    color: white;
-    font-family: 'Catamaran' ,sans-serif;
-    box-shadow: 5px 5px 5px 3px  rgba(0,0,0,0.6);
-    cursor: pointer;
-    font-size: 2rem;
+    padding-left: 20px;
 }
 
+/* ====== RESPONSIVE ====== */
+@media screen and (max-width: 1000px){
+    .div2{
+        width: 95%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mockup-body{
+        flex-direction: column;
+    }
+
+    .mockup-left, .mockup-right{
+        width: 100%;
+    }
+
+    .mockup-buttons{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-mockup{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .comment p{
+        font-size: 1.4rem;
+    }
+
+    .mockup-header h3{
+        font-size: 1.4rem;
+    }
+}

@@ -1,0 +1,304 @@
+:root {
+    --primary: #1205cf;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+    --text-main: #1e293b;
+    --text-light: #64748b;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+}
+
+.document-student-wrapper {
+    width: 100%; /* CHANGEMENT : Prend toute la largeur du main-principale */
+    max-width: 1400px; /* On autorise à s'élargir plus sur PC */
+    margin: 0 auto;
+    padding: 10px; /* Padding réduit pour plus d'espace */
+    box-sizing: border-box;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes sur PC */
+    gap: 25px;
+    width: 100%;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-header p {
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+/* GRID RESPONSIVE */
+
+
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes sur PC */
+    gap: 20px;
+}
+.main-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+/* DROP BOX MODERNE */
+.drop-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #f8fafc;
+    position: relative;
+}
+
+.drop-box.dragging {
+    border-color: var(--primary);
+    background: #eef2ff;
+    transform: scale(1.01);
+}
+
+.drop-box.selected {
+    border-style: solid;
+    border-color: var(--success);
+    background: #f0fdf4;
+}
+
+.upload-icon-anim {
+    font-size: 3rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.label-browse {
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* BOUTONS */
+.btn-launch {
+    width: 100%;
+    margin-top: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(18, 5, 207, 0.2);
+}
+
+.btn-remove {
+    background: #fee2e2;
+    color: var(--danger);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* RAPPORT PDF STYLE */
+.report-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.score-badge {
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid;
+    text-align: center;
+    min-width: 140px;
+}
+
+.score-badge h3 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+/* SOURCES MINI */
+.sources-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.source-item-mini {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.source-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.source-meta a {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.source-progress {
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.source-progress .fill {
+    height: 100%;
+    background: var(--danger);
+    border-radius: 10px;
+}
+
+
+
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* RESPONSIVE DESIGN */
+
+/* Mobiles (iPhone, Samsung, etc.) */
+@media (max-width: 600px) {
+    .page-header h2 { 
+        font-size: 1.3rem; 
+        flex-wrap: wrap; /* Évite que le titre ne sorte de l'écran */
+    }
+
+    .page-header p {
+        font-size: 0.9rem;
+    }
+
+    .main-card {
+        padding: 15px; /* Plus d'espace pour le contenu */
+    }
+
+    /* Le badge de score prend trop de place en horizontal */
+    .report-header { 
+        flex-direction: column; 
+        gap: 15px; 
+        align-items: center; 
+        text-align: center;
+    }
+
+    .score-badge {
+        width: 100%; /* Le badge prend toute la largeur sur mobile */
+        min-width: unset;
+        padding: 15px;
+    }
+
+    .score-badge h3 {
+        font-size: 1.8rem;
+    }
+
+    /* Drop-box plus petite pour ne pas manger l'écran */
+    .drop-box {
+        padding: 30px 10px;
+    }
+
+    .upload-icon-anim {
+        font-size: 2rem;
+    }
+
+    /* Sources : On s'assure que le texte ne déborde pas */
+    .source-meta a {
+        max-width: 60%;
+    }
+
+    .source-item-mini {
+        padding: 10px 0;
+    }
+}
+
+/* Tablettes et petits laptops */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Passage en 1 colonne plus tôt */
+    }
+    
+    .document-student-wrapper {
+        padding: 5px;
+    }
+}
+
+/* Mobiles (iPhone, Samsung, etc.) */
+/* @media (max-width: 600px) {
+    .document-student-wrapper {
+        padding: 0; 
+    }
+
+    .page-header {
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .page-header h2 { 
+        font-size: 1.3rem; 
+    }
+
+    .main-card {
+        border-radius: 0; 
+        padding: 15px;
+        border-left: none;
+        border-right: none;
+    }
+
+    .report-header { 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center;
+    }
+
+    .score-badge {
+        width: 100%;
+        min-width: unset;
+    }
+} */

@@ -1,56 +1,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caramel:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cherry Cream Soda:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Cream+Soda:wght@400;700&display=swap');
 
-
-.Offrestudent{
-    border-radius: 20px;
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-    box-shadow: 2px 2px 2px 2px  rgba(5, 5, 227, 0.6) ;
-    margin: 50px 30px;
-    height: 580px;
-    background-image: url('../images/stuentimage.jpg');
-    background-size: 1400px;
-    background-repeat: no-repeat;
+.Offrestudent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 30px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px rgba(5, 5, 227, 0.6);
+  background-image: url('../images/student.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.divoffre{
-    width: 350px;
-    height: 420px;
-    border-radius: 15px;
-    box-shadow: 2px 2px 2px 2px  rgba(5, 5, 227, 0.6) ;
-    margin-left: 150px;
-    background-color: white;
-    text-align: center;
+/* CARD */
+.divoffre {
+  width: 100%;
+  max-width: 420px;
+  height: 400px;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 2px 2px 8px rgba(5, 5, 227, 0.6);
+  text-align: center;
 }
-.divoffre .div1 button{
-    margin: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.5rem;
-    font-family: 'Cherry Cream Soda', cursive;
-    box-shadow: 2px 2px 2px 2px  rgba(21, 21, 21, 0.6) ;
-    background-color: rgba(6, 6, 241, 0.708);
-    color: white;
+
+/* TITRE */
+.div1 button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-family: 'Cherry Cream Soda', cursive;
+  background-color: rgba(6, 6, 241, 0.708);
+  color: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
-.divoffre .Studentoffre{
-    margin: 20px;
-    justify-content: center;
-    font-family: 'Cherry Cream Soda', cursive;
-    font-size: 1.3rem;
+
+/* TEXTE */
+.Studentoffre {
+  margin: 20px 0;
+  font-family: 'Cherry Cream Soda', cursive;
+  font-size: 1.1rem;
 }
-.divoffre button{
-    margin: 10px;
+
+.Studentoffre p {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BOUTON */
+.divoffre button {
+  margin-top: 15px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Cherry Cream Soda', cursive;
+  background-color: rgba(6, 6, 241, 0.708);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.btn-offreStudent:hover {
+  transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media screen and (max-width: 900px) {
+  .Offrestudent {
+    margin: 30px 15px;
     padding: 20px;
-    border: none;
-    border-radius: 30px;
+  }
+
+  .Studentoffre {
     font-size: 1rem;
-    font-weight: bold;
-    font-family: 'Cherry Cream Soda', cursive;
-    box-shadow: 2px 2px 2px 2px  rgba(21, 21, 21, 0.6) ;
-    background-color: rgba(6, 6, 241, 0.708);
-    color: white;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Offrestudent {
+    margin: 20px 10px;
+  }
+
+  .divoffre {
+    padding: 20px;
+  }
+
+  .div1 button {
+    font-size: 1.2rem;
+  }
+
+  .Studentoffre {
+    font-size: 0.95rem;
+  }
 }
