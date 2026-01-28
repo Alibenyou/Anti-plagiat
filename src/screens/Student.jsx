@@ -100,7 +100,7 @@ function Student() {
                     </div>
 
                     <div className="sidebar-footer">
-                        <p>Avec <span>Plagify</span>, soutenez l'intégrité académique.</p>
+                        <p><strong>Avec notre Application, soutenez l'intégrité académique.</strong></p>
                     </div>
                 </section>
 

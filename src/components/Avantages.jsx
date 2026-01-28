@@ -45,7 +45,7 @@ function Avantage() {
       </div>
 
       <div className="avantage-right">
-        <img src={ImageApp} alt="image" />
+        <img src={ImageApp} alt="Appimage" />
       </div>
     </div>
   )

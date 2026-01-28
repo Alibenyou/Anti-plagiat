@@ -41,35 +41,54 @@ function DocumentStudent({ user }) {
     };
 
     const handleUpload = async () => {
-        if (!file || !user) return;
-        setLoading(true);
-        setResults([]);
-        setGlobalScore(0);
-        setAnalysisStatus('processing');
+    if (!file || !user) return;
+    setLoading(true);
+    setResults([]);
+    setGlobalScore(0);
+    setAnalysisStatus('processing');
 
-        try {
-            const cleanFileName = file.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9.]/g, "_");
-            const filePath = `${user.id}/${Date.now()}_${cleanFileName}`;
-            await supabase.storage.from('fichiers_plagiat').upload(filePath, file);
+    try {
+        // 1. Nettoyage du nom de fichier
+        const cleanFileName = file.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9.]/g, "_");
+        const filePath = `${user.id}/${Date.now()}_${cleanFileName}`;
 
-            const { data: analysisData } = await supabase
-                .from('analyses')
-                .insert([{ 
-                    user_id: user.id, 
-                    file_name: file.name, 
-                    file_path: filePath, 
-                    status: 'traitement' 
-                }])
-                .select().single();
-                
-            setCurrentAnalysisId(analysisData.id);
-            await fetch(`http://127.0.0.1:8000/start-analysis/${analysisData.id}`, { method: 'POST' });
-        } catch (error) {
-            console.error("Erreur:", error);
-            setAnalysisStatus('idle');
-            setLoading(false);
+        // 2. Upload vers Supabase Storage
+        const { error: uploadError } = await supabase.storage.from('fichiers_plagiat').upload(filePath, file);
+        if (uploadError) throw uploadError;
+
+        // 3. Création de l'entrée en base de données
+        const { data: analysisData, error: dbError } = await supabase
+            .from('analyses')
+            .insert([{ 
+                user_id: user.id, 
+                file_name: file.name, 
+                file_path: filePath, 
+                status: 'traitement' 
+            }])
+            .select().single();
+
+        if (dbError) throw dbError;
+            
+        setCurrentAnalysisId(analysisData.id);
+
+        // 4. APPEL AU BACK-END (Correction de l'URL)
+        const response = await fetch(`https://back-end-antiplagiat.onrender.com/start-analysis/${analysisData.id}`, { 
+            method: 'POST' 
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur serveur: ${response.status}`);
         }
-    };
+
+        console.log("Analyse lancée avec succès !");
+
+    } catch (error) {
+        console.error("Erreur détaillée:", error);
+        alert("Une erreur est survenue lors du lancement de l'analyse.");
+        setAnalysisStatus('idle');
+        setLoading(false);
+    }
+};
     
     const fetchHistory = async () => {
         if (!user) return;
@@ -131,7 +150,7 @@ function DocumentStudent({ user }) {
     }, [currentAnalysisId]);
 
     useEffect(() => { fetchHistory(); }, [user]);
-
+    
     return (
         <div className="document-student-wrapper">
             <div className="page-header">
