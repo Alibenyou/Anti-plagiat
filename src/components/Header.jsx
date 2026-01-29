@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import ButtonLangue from "./ButtonLangue";
-import "../Styles/Header.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUserPlus, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import '../Styles/Header.css';
+import Logo from '../images/logo.png';
+import ButtonLangue from './ButtonLangue';
+import { useState } from 'react';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
