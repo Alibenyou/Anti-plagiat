@@ -292,6 +292,79 @@
     border-radius: 10px;
 }
 
+/* --- FIX POUR NOM DE FICHIER TROP LONG --- */
+.file-ui {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--success);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Empêche tout dépassement */
+}
+
+.file-info-truncated {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1; /* Prend l'espace restant sans pousser les bords */
+    overflow: hidden;
+}
+
+.name-file {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;      /* Pas de retour à la ligne */
+    overflow: hidden;         /* Cache le surplus */
+    text-overflow: ellipsis;  /* Ajoute les "..." */
+    width: 100%;              /* Important pour que l'ellipsis fonctionne */
+    display: block;
+    text-align: left;
+}
+
+.file-size {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.file-icon-selected {
+    font-size: 1.5rem;
+    color: var(--success);
+    flex-shrink: 0; /* Empêche l'icône de s'écraser */
+}
+
+/* --- AJUSTEMENT RESPONSIVE GLOBAL --- */
+
+@media (max-width: 768px) {
+    .document-student-wrapper {
+        padding: 10px;
+        overflow-x: hidden; /* Sécurité anti-scroll horizontal */
+    }
+
+    .drop-box {
+        padding: 25px 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Force le conteneur principal à ne pas dépasser */
+    .main-card {
+        max-width: 100%;
+        overflow: hidden;
+    }
+}
+
+/* Pour les écrans très petits (iPhone SE, etc.) */
+@media (max-width: 380px) {
+    .name-file {
+        max-width: 140px; /* Encore plus strict sur petit mobile */
+    }
+}
+
 /* Mobiles (iPhone, Samsung, etc.) */
 @media (max-width: 600px) {
     .page-header h2 { 
@@ -350,7 +423,4 @@
         grid-template-columns: 1fr; /* Passage en 1 colonne plus tôt */
     }
     
-    .document-student-wrapper {
-        padding: 5px;
-    }
 }

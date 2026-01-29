@@ -17,7 +17,6 @@ function DocumentStudent({ user }) {
     const [file, setFile] = useState(null);
     const [dragging, setDragging] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [results, setResults] = useState([]);
     const [currentAnalysisId, setCurrentAnalysisId] = useState(null);
     const [analysisStatus, setAnalysisStatus] = useState('idle');
     const [history, setHistory] = useState([]);
@@ -41,7 +40,6 @@ function DocumentStudent({ user }) {
         }
 
         setLoading(true);
-        setResults([]);
         setGlobalScore(0);
         setAnalysisStatus('Initialisation...');
 
@@ -92,6 +90,7 @@ function DocumentStudent({ user }) {
     };
 
     // --- TEMPS RÉEL : UNIQUE ET OPTIMISÉ ---
+    // --- TEMPS RÉEL : UNIQUE ET OPTIMISÉ ---
     useEffect(() => {
         if (!currentAnalysisId) return;
 
@@ -101,9 +100,21 @@ function DocumentStudent({ user }) {
                 { event: 'UPDATE', schema: 'public', table: 'analyses', filter: `id=eq.${currentAnalysisId}` },
                 (payload) => {
                     const { status, progress, plagiarism_score, report_path } = payload.new;
-                    setAnalysisStatus(status);
-                    setGlobalScore(progress); // Utilise la progression pour la barre
+                    
+                    // 1. GESTION DE L'ERREUR
+                    if (status === 'erreur') {
+                        setAnalysisStatus('idle');
+                        setLoading(false);
+                        setCurrentAnalysisId(null);
+                        alert("❌ Désolé, une erreur technique est survenue sur le serveur. Veuillez vérifier votre fichier et réessayer.");
+                        return;
+                    }
 
+                    // 2. MISE À JOUR CLASSIQUE
+                    setAnalysisStatus(status);
+                    setGlobalScore(progress); 
+
+                    // 3. FINALISATION
                     if (status === 'termine' || progress === 100) {
                         setGlobalScore(plagiarism_score);
                         setReportPath(report_path);
@@ -115,7 +126,7 @@ function DocumentStudent({ user }) {
             ).subscribe();
 
         return () => supabase.removeChannel(channel);
-    }, [currentAnalysisId]);
+    }, [currentAnalysisId]);;
 
     useEffect(() => { fetchHistory(); }, [user]);
 
@@ -166,10 +177,18 @@ function DocumentStudent({ user }) {
                                 </div>
                             ) : (
                                 <div className="file-ui">
-                                    <FontAwesomeIcon icon={faFileLines} />
-                                    <span className="name-file">{file.name}</span>
-                                    <button onClick={() => setFile(null)} className="btn-remove"><FontAwesomeIcon icon={faXmark} /></button>
-                                </div>
+                                   <FontAwesomeIcon icon={faFileLines} className="file-icon-selected" />
+                                    <div className="file-info-truncated">
+                                       {/* On ajoute title pour voir le nom complet au survol */}
+                                       <span className="name-file" title={file.name}>
+                                           {file.name}
+                                       </span>
+                                       <span className="file-size">({(file.size / 1024 / 1024).toFixed(2)} Mo)</span>
+                                    </div>
+                                      <button onClick={() => setFile(null)} className="btn-remove">
+                                       <FontAwesomeIcon icon={faXmark} />
+                                      </button>
+                               </div>
                             )}
                         </div>
 
