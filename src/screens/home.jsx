@@ -84,19 +84,13 @@ function Home() {
               >
                 {loading ? "Analyse..." : "Détecter le texte"}
               </button>
-
-              <label>
+        
+        <Link to="/connexion">
+              <label >
                 <FontAwesomeIcon icon={faArrowUpFromBracket} />
-                <input
-                  type="file"
-                  hidden
-                  accept=".pdf,.docx"
-                  onChange={(e) => {
-                    setFile(e.target.files[0]);
-                    setText("");
-                  }}
-                />
+                 Importer un document
               </label>
+         </Link>     
             </div>
 
             {result && (

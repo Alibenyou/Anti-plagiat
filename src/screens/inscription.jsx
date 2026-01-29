@@ -3,7 +3,7 @@ import { faUser, faEnvelope, faLock, faUserTie} from '@fortawesome/free-solid-sv
 import { faGoogle} from '@fortawesome/free-brands-svg-icons';
 
 
-//import { supabase } from '../supabaseClient';
+import { supabase } from '../supabaseClient';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './inscription.css'
@@ -22,9 +22,30 @@ function Inscription() {
 
 const handleSignUp = async (e) => {
   e.preventDefault();
-  alert("TEST INSCRIPTION OK");
-};
+  setLoading(true);
 
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert(error.message); // On garde l'alert pour l'erreur pour l'instant
+    setLoading(false);
+    return;
+  }
+
+  if (data?.user) {
+    const { error: profileError } = await supabase
+      .from('profiles')
+      .insert([{ id: data.user.id, full_name: name, profession: profil, email: email }]);
+
+    if (!profileError) {
+      setLoading(false);
+      setShowModal(true); // ON AFFICHE LA MODALE DE SUCCÈS ICI
+    }
+  }
+};
     return <>
               <div>
               <header>
