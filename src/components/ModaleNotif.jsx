@@ -1,29 +1,99 @@
+import { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient';
+
 function ModaleNotif({
+     userId,
      isNotifOpen,
      setIsNotifOpen
 }){
-        return<>
-                {isNotifOpen && (
-              <div style={{ ...styles.overlay, right: '80px', width: '300px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3 style={{ margin: 0, fontSize: '16px' }}>Notifications</h3>
-                  <span style={{ fontSize: '12px', color: '#1da1f2', cursor: 'pointer' }}>Tout marquer comme lu</span>
+
+  const [notifications, setNotifications] = useState([]);
+  const [hasUnread, setHasUnread] = useState(false);
+
+  useEffect(() => {
+    // 1. Charger les notifications existantes
+    fetchNotifications();
+
+    // 2. Écouter les nouvelles notifications en TEMPS RÉEL
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'notifications',
+          filter: `user_id=eq.${userId}`,
+        },
+        (payload) => {
+          console.log('Nouvelle notification reçue !', payload.new);
+          setNotifications((prev) => [payload.new, ...prev]);
+          setHasUnread(true);
+          // Optionnel : Jouer un petit son de notification ici
+        }
+      )
+      .subscribe();
+
+    return () => supabase.removeChannel(channel);
+  }, [userId]);
+
+  const fetchNotifications = async () => {
+    const { data } = await supabase
+      .from('notifications')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
+    
+    if (data) {
+      setNotifications(data);
+      setHasUnread(data.some(n => !n.is_read));
+    }
+  };
+  return <>
+
+        {isNotifOpen && (
+        <div style={{ ...styles.overlay, right: '80px', width: '320px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h3 style={{ margin: 0, fontSize: '16px' }}>Notifications ({notifications.length})</h3>
+            <span 
+              onClick={() => {/* Logique pour marquer comme lu en DB */}}
+              style={{ fontSize: '12px', color: '#1205cf', cursor: 'pointer' }}
+            >
+              Tout marquer comme lu
+            </span>
+          </div>
+          <hr style={styles.separator} />
+          
+          <div style={{ ...styles.menuList, maxHeight: '400px', overflowY: 'auto' }}>
+            {notifications.length === 0 ? (
+              <p style={{ textAlign: 'center', fontSize: '13px', color: '#64748b' }}>
+                Aucune notification pour le moment.
+              </p>
+            ) : (
+              notifications.map((notif) => (
+                <div key={notif.id} style={{
+                  ...styles.notifItem, 
+                  borderLeft: notif.is_read ? '4px solid #e2e8f0' : '4px solid #1205cf',
+                  opacity: notif.is_read ? 0.7 : 1
+                }}>
+                  <p style={{ margin: 0, fontSize: '13px', color: '#1e293b' }}>
+                    {notif.title}
+                  </p>
+                  <p style={{ margin: '4px 0', fontSize: '12px', color: '#64748b' }}>
+                    {notif.message}
+                  </p>
+                  <span style={{ fontSize: '10px', color: '#b2bec3' }}>
+                    {new Date(notif.created_at).toLocaleDateString()} {new Date(notif.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                  </span>
                 </div>
-                <hr style={styles.separator} />
-                <div style={styles.menuList}>
-                  <div style={styles.notifItem}>
-                    <p style={{ margin: 0, fontSize: '13px' }}>✅ Votre fichier <strong>"Rapport.pdf"</strong> a été analysé avec succès.</p>
-                    <span style={{ fontSize: '10px', color: '#b2bec3' }}>Il y a 2 min</span>
-                  </div>
-                  <div style={styles.notifItem}>
-                    <p style={{ margin: 0, fontSize: '13px' }}>⚠️ Attention : Taux de plagiat élevé détecté sur <strong>"Thèse_V1"</strong>.</p>
-                    <span style={{ fontSize: '10px', color: '#b2bec3' }}>Il y a 1 heure</span>
-                  </div>
-                </div>
-                <button onClick={() => setIsNotifOpen(false)} style={styles.closeBtn}>Fermer</button>
-              </div>
+              ))
             )}
-              </>
+          </div>
+          
+          <button onClick={() => setIsNotifOpen(false)} style={styles.closeBtn}>Fermer</button>
+        </div>
+      )}
+    </>
 
 
 }

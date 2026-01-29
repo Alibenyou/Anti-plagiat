@@ -118,7 +118,7 @@ function Student() {
             
         </div>
         <ModalProfilStudent user={user} handleLogout={handleLogout} isProfilOpen={isProfilOpen} toggleProfil={toggleProfil} />
-        <ModaleNotif isNotifOpen={isNotifOpen} setIsNotifOpen={setIsNotifOpen} />
+        <ModaleNotif isNotifOpen={isNotifOpen} setIsNotifOpen={setIsNotifOpen} userId={user.id}/>
         <ModaleHelp isHelpOpen={isHelpOpen} setIsHelpOpen={setIsHelpOpen} />
     </>
 }
