@@ -13,22 +13,31 @@ function HistoryStudent({
 }) {
 
   // Fonction pour supprimer une analyse
-  const handleDelete = async (e, id) => {
-    e.stopPropagation(); // Empêche de déclencher le "Voir le rapport"
-    if (!window.confirm("Voulez-vous vraiment supprimer cette analyse ?")) return;
 
-    try {
-      const { error } = await supabase.from('analyses').delete().eq('id', id);
-      if (error) throw error;
-      
-      // Mise à jour locale de l'état pour que l'item disparaisse immédiatement
-      setHistory(history.filter(item => item.id !== id));
-    } catch (error) {
-      console.error("Erreur suppression:", error.message);
-      alert("Erreur lors de la suppression.");
-    }
-  };
+const handleDelete = async (e, id) => {
+  e.stopPropagation();
+  if (!window.confirm("Voulez-vous vraiment supprimer cette analyse définitivement ?")) return;
 
+  try {
+    // On demande explicitement la réponse pour vérifier si une ligne a été touchée
+    const { error, count } = await supabase
+      .from('analyses')
+      .delete()
+      .eq('id', id)
+      .select(); // Le .select() force Supabase à confirmer l'action
+
+    if (error) throw error;
+
+    console.log(`Suppression réussie pour l'ID: ${id}`);
+    
+    // Mise à jour de l'état local
+    setHistory(prevHistory => prevHistory.filter(item => item.id !== id));
+
+  } catch (error) {
+    console.error("Erreur suppression détaillée:", error);
+    alert(`Erreur : ${error.message || "Problème de connexion à la base de données"}`);
+  }
+};
   return (
     <div className="history-section">
           

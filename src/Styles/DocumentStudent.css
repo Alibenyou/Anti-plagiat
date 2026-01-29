@@ -204,7 +204,93 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-/* RESPONSIVE DESIGN */
+
+/* --- BARRE DE PROGRESSION ANIMÉE --- */
+.loader-status {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.loader-status p {
+    margin: 10px 0;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #4f46e5);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(18, 5, 207, 0.3);
+}
+
+/* --- BOUTON RAPPORT PDF IA --- */
+.report-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-pdf {
+    background: #ffffff;
+    color: #cf1322;
+    border: 2px solid #ffa39e;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-pdf:hover {
+    background: #fff1f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(207, 19, 34, 0.1);
+}
+
+.btn-close-report {
+    background: #f1f5f9;
+    color: var(--text-light);
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-close-report:hover {
+    background: #e2e8f0;
+    color: var(--danger);
+}
+
+/* --- AMÉLIORATION SCROLLBAR SOURCES --- */
+.sources-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sources-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.sources-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
 
 /* Mobiles (iPhone, Samsung, etc.) */
 @media (max-width: 600px) {
@@ -268,37 +354,3 @@
         padding: 5px;
     }
 }
-
-/* Mobiles (iPhone, Samsung, etc.) */
-/* @media (max-width: 600px) {
-    .document-student-wrapper {
-        padding: 0; 
-    }
-
-    .page-header {
-        margin-bottom: 20px;
-        padding: 0 10px;
-    }
-
-    .page-header h2 { 
-        font-size: 1.3rem; 
-    }
-
-    .main-card {
-        border-radius: 0; 
-        padding: 15px;
-        border-left: none;
-        border-right: none;
-    }
-
-    .report-header { 
-        flex-direction: column; 
-        align-items: center; 
-        text-align: center;
-    }
-
-    .score-badge {
-        width: 100%;
-        min-width: unset;
-    }
-} */
