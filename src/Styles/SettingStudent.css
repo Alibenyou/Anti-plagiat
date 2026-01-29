@@ -1,0 +1,99 @@
+.history-section {
+    margin-top: 3rem;
+    border-top: 2px solid #f1f5f9;
+    padding-top: 2rem;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px; /* Plus serré */
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.history-item:hover {
+    background: #f1f5f9;
+}
+
+.history-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.history-date {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+/* Le score plus discret */
+.history-score {
+    font-size: 0.9rem;
+    font-weight: bold;
+    min-width: 50px;
+}
+
+
+
+
+.view-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.history-count {
+    background: #e2e8f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+.history-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.history-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #fca5a5;
+    color: white;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 3rem;
+    color: #94a3b8;
+    border: 2px dashed #e2e8f0;
+    border-radius: 12px;
+}

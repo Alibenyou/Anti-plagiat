@@ -1,0 +1,252 @@
+:root {
+  --bg-main: #f4f5f7;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-header: #ffffff;
+
+  --text-main: #333;
+  --text-light: #aaa;
+  --text-white: #fff;
+
+  --gray-hover: #444;
+  --gray-active: #555;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CONTAINER */
+.container {
+  height: 100vh;
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ================= HEADER ================= */
+header {
+  background: var(--bg-header);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  gap: 15px;
+}
+
+/* ================= LEFT ================= */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Hamburger à gauche */
+.hamburger-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 22px;
+  cursor: pointer;
+  display: none; /* visible seulement mobile */
+}
+
+/* Logo */
+.logo-img {
+  width: 38px;
+  height: auto;
+}
+
+.logo-text {
+  font-family: 'Caramel', cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: blue;
+}
+
+/* ================= CENTER ================= */
+.header-center {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.file-count {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.file-label {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* ================= RIGHT ================= */
+.divUser {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-icon {
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 18px;
+}
+
+.header-icon:hover {
+  color: var(--text-white);
+}
+
+.user-avatar {
+  background: #555;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLETTE */
+@media (max-width: 1024px) {
+  .logo-text {
+    font-size: 14px;
+  }
+}
+
+/* ================= LAYOUT ================= */
+.content-layout {
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 240px;
+  background: var(--bg-sidebar);
+  color: var(--text-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fonctionaliteStudent {
+  padding-top: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px 20px;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background: var(--gray-hover);
+  color: white;
+}
+
+.menu-item.active {
+  background: var(--gray-active);
+  color: white;
+}
+
+/* ================= SIDEBAR FOOTER ================= */
+.sidebar-footer {
+  padding: 15px;
+  font-size: 12px;
+  color: var(--text-light);
+  border-top: 1px solid #444;
+}
+
+.sidebar-footer span {
+  color: white;
+  font-weight: bold;
+}
+
+/* ================= MAIN CONTENT ================= */
+.menu-principale {
+  flex: 1;
+  padding: 20px;
+  background: var(--bg-main);
+  overflow-y: auto;
+}
+
+/* ================= LOADER ================= */
+.loader-session {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #666;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+   header {
+    padding: 10px 15px;
+  }
+
+  /* Affiche le hamburger */
+  .hamburger-btn {
+    display: block;
+  }
+
+  /* Cache le texte du logo */
+  .logo-text {
+    display: none;
+  }
+
+  /* Cache le centre (compteur) */
+  .header-center {
+    display: none;
+  }
+
+  /* Icônes plus compactes */
+  .header-icon {
+    font-size: 16px;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+  }
+}
+
