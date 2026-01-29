@@ -1,89 +1,138 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import Header from '../components/Header';
-import '../Styles/home.css';
-import Avantage from '../components/Avantages';
-import OffreStudent from '../components/OffreStudent';
-import Offresteacher from '../components/OffreTeacher';
-import Avistudent from '../components/AvisStudent';
-import Avisteacher from '../components/Avisteacher';
-import Footer from '../components/Footer';
+
+import React, { useState } from "react";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleCheck,
+  faGraduationCap,
+  faChalkboardUser,
+  faArrowUpFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link, useNavigate } from "react-router-dom";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Avantage from "../components/Avantages";
+import OffreStudent from "../components/OffreStudent";
+import Offresteacher from "../components/OffreTeacher";
+import Avistudent from "../components/AvisStudent";
+import Avisteacher from "../components/Avisteacher";
+import "../Styles/home.css";
 
 function Home() {
+  const navigate = useNavigate();
+  const [text, setText] = useState("");
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
 
-    return (
-        <>
-            <Header />
+  //  l'URL directe de ton backend Render
+  const BACKEND_URL = "https://anti-plagiat-backend.onrender.com";
 
-            <div className="div1">
-                <div className="div2">
+  const handleCheck = async () => {
+    if (!text && !file) {
+      alert("Veuillez entrer un texte ou sélectionner un fichier");
+      return;
+    }
 
-                    {/* ======= DEMO MOCKUP ======= */}
-                    <div className="mockup">
-                        <div className="mockup-header">
-                            <div className="dot red"></div>
-                            <div className="dot yellow"></div>
-                            <div className="dot green"></div>
-                            <h3>Anti-plagiat - Démo</h3>
-                        </div>
+    setLoading(true);
+    setResult(null);
 
-                        <div className="mockup-body">
-                            <div className="mockup-left">
-                                <div className="mockup-card">
-                                    <h4>Résultat rapide</h4>
-                                    <p className="score">Taux de plagiat : <span>12%</span></p>
-                                    <p className="status">Statut : <span>Ok</span></p>
-                                </div>
+    const formData = new FormData();
+    if (file) formData.append("file", file);
+    else formData.append("text", text);
 
-                                <div className="mockup-card">
-                                    <h4>Sources détectées</h4>
-                                    <ul>
-                                        <li>📄 Source 1 - <b>4%</b></li>
-                                        <li>📄 Source 2 - <b>8%</b></li>
-                                        <li>📄 Source 3 - <b>2%</b></li>
-                                    </ul>
-                                </div>
-                            </div>
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/plagiarism/check`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-                            <div className="mockup-right">
-                                <div className="mockup-screen">
-                                    <h4>Zone d'analyse</h4>
-                                    <div className="mockup-text">
-                                        <p>
-                                            Ici sera affichée la détection de plagiat.
-                                            <br />
-                                            Tu peux ajouter ton document et obtenir le score.
-                                        </p>
-                                    </div>
+      setResult(res.data);
+    } catch (err) {
+      console.error("Erreur Axios:", err.response?.data || err.message);
+      alert("Erreur lors de l'analyse, voir console");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-                                    <div className="mockup-buttons">
-                                        <button className="btn-mockup">Téléverser un document</button>
-                                        <button className="btn-mockup btn-blue">Analyser</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <>
+      <Header />
 
-                    {/* ======= COMMENT ======= */}
-                    <div className="comment">
-                        <p><FontAwesomeIcon icon={faCircleCheck} /> Logiciel Anti-plagiat</p>
-                        <p><FontAwesomeIcon icon={faCircleCheck} /> Détection de Contenu IA</p>
-                    </div>
+      <div className="div1">
+        <div className="div2">
+          <div className="div3">
+            <textarea
+              placeholder="Entrer du texte ou importer un fichier"
+              value={text}
+              disabled={!!file}
+              onChange={(e) => setText(e.target.value)}
+            />
 
-                </div>
+            <div className="btn-text">
+              <button
+                className="detection"
+                onClick={handleCheck}
+                disabled={loading}
+              >
+                {loading ? "Analyse..." : "Détecter le texte"}
+              </button>
+        
+        <Link to="/connexion">
+              <label >
+                <FontAwesomeIcon icon={faArrowUpFromBracket} />
+                 Importer un document
+              </label>
+         </Link>     
             </div>
 
-            {/* ======= AUTRES COMPOSANTS ======= */}
-            <Avantage />
-            <OffreStudent />
-            <Avistudent />
-            <Offresteacher />
-            <Avisteacher />
-            <hr />
-            <Footer />
-        </>
-    );
+            {result && (
+              <div className="result-box">
+                <h3>Taux de similarité</h3>
+                <div className="score">{result?.globalSimilarity ?? 0} %</div>
+
+                {result?.report && (
+                  <a
+                    href={`${BACKEND_URL}/${result.report}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Télécharger le rapport PDF
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div className="comment">
+            <p>
+              <FontAwesomeIcon icon={faCircleCheck} /> Logiciel Anti-plagiat
+            </p>
+            <p>
+              <FontAwesomeIcon icon={faCircleCheck} /> Détection de contenu IA
+            </p>
+          </div>
+        </div>
+      </div>
+
+     
+
+      <Avantage />
+      <OffreStudent />
+      <Avistudent />
+      <Offresteacher />
+      <Avisteacher />
+      <hr />
+      <Footer />
+    </>
+  );
 }
 
 export default Home;
