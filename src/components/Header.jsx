@@ -32,6 +32,7 @@ function Header() {
         <li><a href="#Aide">Aide</a></li>
         <li><a href="#Apropos">Apropos</a></li>
         <li><a href="#contact">Nous contacter</a></li>
+        <li><Link to="/pertinence">Pertinence</Link></li>
       </ul>
 
       {/* Buttons */}

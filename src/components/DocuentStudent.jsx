@@ -210,9 +210,15 @@ function DocumentStudent({ user }) {
 
                     <div className="main-card history-section-card">
                         <HistoryStudent 
-                            history={history}
-                            setHistory={setHistory}
-                            onSelectAnalysis={(id) => { setCurrentAnalysisId(id); setLoading(true); }}
+                           history={history}
+                           setHistory={setHistory}
+                           // On passe directement les fonctions de mise à jour d'état
+                           setCurrentAnalysisId={setCurrentAnalysisId}
+                           setAnalysisStatus={setAnalysisStatus}
+                           setGlobalScore={setGlobalScore}
+                           setReportPath={setReportPath}
+                           // Pour recharger l'historique si besoin
+                           fetchResults={fetchHistory} 
                         />
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import Home from './screens/home'
 import Student from './screens/Student';
 import Teacher from './screens/Teacher';
 import Admin from './screens/Admin';
+import Pertinence from './screens/Pertinence';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/pertinence" element={<Pertinence/>}/>
         <Route path="/student" element={<Student/>}/>
         <Route path="/teacher" element={<Teacher/>}/>
         <Route path="/admin" element={<Admin/>}/>

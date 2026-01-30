@@ -1,0 +1,167 @@
+/* ===== Container principal ===== */
+.pertinence-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #f9faff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== Titres ===== */
+.pertinence-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #0B3D91;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* ===== Textarea et Input ===== */
+.pertinence-container textarea,
+.pertinence-container input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+  transition: 0.3s;
+}
+
+.pertinence-container textarea:focus,
+.pertinence-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0B3D91;
+  box-shadow: 0 0 10px rgba(11, 61, 145, 0.3);
+}
+
+/* ===== Zone des pondérations ===== */
+.weights-inputs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.weights-inputs label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #0B3D91;
+}
+
+.weights-inputs input {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.weights-inputs input:focus {
+  border-color: #0B3D91;
+  box-shadow: 0 0 8px rgba(11, 61, 145, 0.3);
+}
+
+/* ===== Bouton principal ===== */
+.pertinence-container button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #0B3D91, #0F7AC4);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.pertinence-container button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== Zone upload fichier ===== */
+.file-upload {
+  margin-bottom: 20px;
+}
+
+.file-upload label {
+  display: inline-block;
+  cursor: pointer;
+  background: #E8F0FE;
+  color: #0B3D91;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.file-upload label:hover {
+  background: #0B3D91;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===== Résultat détaillé ===== */
+.result-box {
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 0.7s ease;
+}
+
+.result-box h3 {
+  color: #0B3D91;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.result-box p, .result-box li {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.result-box a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #0B3D91;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.result-box a:hover {
+  background: #0F7AC4;
+  transform: scale(1.05);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+  .weights-inputs {
+    flex-direction: column;
+  }
+  .pertinence-container {
+    padding: 20px;
+  }
+}

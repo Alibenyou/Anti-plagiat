@@ -9,7 +9,8 @@ function HistoryStudent({
   fetchResults,
   history,
   setHistory, // On ajoute setHistory pour mettre à jour la liste après suppression
-  setGlobalScore
+  setGlobalScore,
+  setReportPath
 }) {
 
   // Fonction pour supprimer une analyse
@@ -70,9 +71,10 @@ const handleDelete = async (e, id) => {
                 <button 
                   onClick={() => {
                     setCurrentAnalysisId(item.id);
-                    setGlobalScore(item.plagiarism_score); // <--- FORCE la mise à jour du score
+                    setGlobalScore(item.plagiarism_score); 
+                    setReportPath(item.report_path); // <--- AJOUTE CETTE LIGNE : transmet le PDF au parent
                     setAnalysisStatus('completed');
-                    fetchResults(item.id);
+                    if(fetchResults) fetchResults(item.id); // Sécurité si fetchResults est défini
                   }} 
                   className="view-btn"
                   title="Voir le rapport"
